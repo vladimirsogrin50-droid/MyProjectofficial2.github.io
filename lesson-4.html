@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 4: Работа с DOM - JavaScript Pro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .demo-box {
+            background: #f0f0f0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .demo-box.highlight {
+            background: #2563eb;
+            color: white;
+        }
+        .color-demo {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 10px auto;
+            transition: background 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="/">JavaScript Pro</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/#about" class="nav-link">О курсе</a></li>
+                <li><a href="/#lessons" class="nav-link">Уроки</a></li>
+                <li><a href="/lessons.html" class="nav-link">Все уроки</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <article class="lesson-article">
+            <div class="container">
+                <div class="lesson-header">
+                    <div class="breadcrumbs">
+                        <a href="/">Главная</a> / 
+                        <a href="/lessons.html">Уроки</a> / 
+                        <span>Урок 4</span>
+                    </div>
+                    <h1>Урок 4: Работа с DOM</h1>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 30 минут</span>
+                        <span><i class="fas fa-code"></i> Средний</span>
+                    </div>
+                </div>
+
+                <div class="lesson-content">
+                    <section>
+                        <h2>Что такое DOM?</h2>
+                        <p>DOM (Document Object Model) — это программный интерфейс для HTML-документов. Он представляет страницу в виде дерева объектов, с которыми можно взаимодействовать через JavaScript.</p>
+                        <p>DOM позволяет:</p>
+                        <ul>
+                            <li>Находить элементы на странице</li>
+                            <li>Изменять содержимое элементов</li>
+                            <li>Добавлять и удалять элементы</li>
+                            <li>Изменять стили элементов</li>
+                            <li>Обрабатывать события (клики, ввод текста и т.д.)</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Поиск элементов на странице</h2>
+                        <pre><code>
+// Поиск по ID (возвращает один элемент)
+const header = document.getElementById('header');
+
+// Поиск по классу (возвращает коллекцию)
+const items = document.getElementsByClassName('item');
+
+// Поиск по тегу (возвращает коллекцию)
+const paragraphs = document.getElementsByTagName('p');
+
+// Поиск по селектору CSS (первый элемент)
+const firstButton = document.querySelector('.btn');
+
+// Поиск по селектору CSS (все элементы)
+const allButtons = document.querySelectorAll('.btn');
+
+// Примеры селекторов:
+// .class - поиск по классу
+// #id - поиск по id
+// div p - все p внутри div
+// button.btn - кнопки с классом btn
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Изменение содержимого</h2>
+                        <pre><code>
+// Изменение текста
+const title = document.getElementById('title');
+title.textContent = 'Новый заголовок';
+
+// Изменение HTML содержимого (осторожно, XSS риски!)
+title.innerHTML = '&lt;strong&gt;Жирный текст&lt;/strong&gt;';
+
+// Получение и изменение атрибутов
+const link = document.querySelector('a');
+link.getAttribute('href');                 // получить
+link.setAttribute('href', 'https://example.com'); // установить
+link.removeAttribute('target');            // удалить
+
+// Работа с data-атрибутами
+const card = document.querySelector('.card');
+card.dataset.userId = '123';              // data-user-id="123"
+console.log(card.dataset.userId);          // '123'
+                        </code></pre>
+
+                        <div class="demo-box" id="demoText">
+                            <p>Это демонстрационный блок. Нажмите на кнопку ниже, чтобы изменить текст.</p>
+                        </div>
+                        <button class="btn btn-primary" id="changeTextBtn">Изменить текст</button>
+                    </section>
+
+                    <section>
+                        <h2>Изменение стилей</h2>
+                        <pre><code>
+const box = document.querySelector('.box');
+
+// Изменение отдельных стилей
+box.style.backgroundColor = 'blue';
+box.style.color = 'white';
+box.style.padding = '10px';
+box.style.fontSize = '18px';
+
+// Добавление/удаление классов (рекомендуемый способ)
+box.classList.add('active');           // добавить класс
+box.classList.remove('active');        // удалить класс
+box.classList.toggle('active');        // переключить класс
+box.classList.contains('active');      // проверить наличие
+
+// Получение вычисленных стилей
+const styles = getComputedStyle(box);
+console.log(styles.backgroundColor);
+                        </code></pre>
+
+                        <div class="demo-box" id="colorDemo">
+                            <p>Нажмите на квадрат, чтобы изменить цвет</p>
+                            <div class="color-demo" id="colorSquare"></div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Создание и удаление элементов</h2>
+                        <pre><code>
+// Создание элемента
+const newDiv = document.createElement('div');
+newDiv.textContent = 'Новый элемент';
+newDiv.classList.add('new-class');
+
+// Добавление на страницу
+const container = document.getElementById('container');
+container.appendChild(newDiv);              // в конец
+container.insertBefore(newDiv, container.firstChild); // в начало
+
+// Вставка HTML
+container.insertAdjacentHTML('beforeend', '&lt;p&gt;Новый параграф&lt;/p&gt;');
+
+// Удаление элемента
+const elementToRemove = document.getElementById('remove-me');
+elementToRemove.remove();                   // современный способ
+container.removeChild(elementToRemove);     // старый способ
+
+// Клонирование элемента
+const clonedElement = elementToRemove.cloneNode(true); // true - глубокое клонирование
+                        </code></pre>
+
+                        <div id="taskList">
+                            <h3>Список задач</h3>
+                            <ul id="tasks">
+                                <li>Изучить DOM <button class="delete-task">Удалить</button></li>
+                                <li>Сделать домашнее задание <button class="delete-task">Удалить</button></li>
+                            </ul>
+                            <input type="text" id="newTask" placeholder="Новая задача">
+                            <button class="btn btn-primary" id="addTaskBtn">Добавить задачу</button>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Обработка событий</h2>
+                        <p>События — это действия пользователя или браузера, на которые можно реагировать.</p>
+                        <pre><code>
+const button = document.getElementById('myButton');
+
+// Добавление обработчика
+button.addEventListener('click', function(event) {
+    console.log('Кнопка нажата!');
+    console.log('Целевой элемент:', event.target);
+    console.log('Тип события:', event.type);
+});
+
+// Стрелочная функция
+button.addEventListener('click', (event) => {
+    console.log('Клик!');
+});
+
+// Основные типы событий:
+// click - клик мышью
+// mouseenter / mouseleave - наведение мыши
+// submit - отправка формы
+// input - ввод текста
+// keydown / keyup - нажатие клавиш
+// scroll - прокрутка
+// load - загрузка страницы
+                        </code></pre>
+
+                        <div class="demo-box">
+                            <p>Количество кликов: <span id="clickCount">0</span></p>
+                            <button class="btn btn-primary" id="clickCounterBtn">Нажми меня</button>
+                            <button class="btn btn-secondary" id="resetCounterBtn">Сбросить</button>
+                        </div>
+
+                        <pre><code>
+// Удаление обработчика
+button.removeEventListener('click', handlerFunction);
+
+// Всплытие событий (event bubbling)
+document.querySelector('.parent').addEventListener('click', () => {
+    console.log('Клик на родителе');
+});
+
+document.querySelector('.child').addEventListener('click', (e) => {
+    e.stopPropagation(); // остановить всплытие
+    console.log('Клик на ребенке');
+});
+
+// Делегирование событий
+document.querySelector('#taskList').addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-task')) {
+        e.target.parentElement.remove();
+    }
+});
+                        </code></pre>
+                    </section>
+
+                    <section class="practice">
+                        <h2>Практическое задание</h2>
+                        <p>1. Создайте на странице кнопку "Показать сообщение". При нажатии на кнопку должно появляться новое сообщение (элемент div) с текстом "Привет, мир!" и классом "message". Сообщение должно исчезать через 3 секунды.</p>
+                        <p>2. Создайте элемент input и кнопку. При вводе текста в input и нажатии на кнопку, текст должен добавляться в список ul.</p>
+                        <p>3. Создайте элемент div с квадратом. При наведении мыши квадрат меняет цвет, при уходе мыши возвращается обратно.</p>
+                    </section>
+
+                    <div class="demo-box" id="practiceArea">
+                        <h3>Практическая область</h3>
+                        <p>Попробуйте создать свой интерактивный элемент прямо здесь!</p>
+                        <button class="btn btn-primary" id="practiceBtn">Создать сообщение</button>
+                        <div id="practiceOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-navigation">
+                    <a href="/lessons/lesson-3.html" class="btn btn-secondary">← Предыдущий урок</a>
+                    <a href="/lessons/lesson-5.html" class="btn btn-primary">Следующий урок →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JavaScript Pro. Бесплатный курс по JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // Интерактивные примеры для урока 4
+        document.addEventListener('DOMContentLoaded', () => {
+            // Пример изменения текста
+            const changeTextBtn = document.getElementById('changeTextBtn');
+            const demoText = document.getElementById('demoText');
+            if (changeTextBtn && demoText) {
+                changeTextBtn.addEventListener('click', () => {
+                    demoText.innerHTML = '<p><strong>Текст успешно изменен!</strong> Это демонстрация работы с DOM.</p>';
+                });
+            }
+
+            // Пример изменения цвета квадрата
+            const colorSquare = document.getElementById('colorSquare');
+            if (colorSquare) {
+                const colors = ['red', 'blue', 'green', 'orange', 'purple'];
+                let colorIndex = 0;
+                colorSquare.addEventListener('click', () => {
+                    colorIndex = (colorIndex + 1) % colors.length;
+                    colorSquare.style.backgroundColor = colors[colorIndex];
+                });
+            }
+
+            // Пример счетчика кликов
+            let clickCounter = 0;
+            const clickCounterBtn = document.getElementById('clickCounterBtn');
+            const clickCountSpan = document.getElementById('clickCount');
+            const resetCounterBtn = document.getElementById('resetCounterBtn');
+            
+            if (clickCounterBtn && clickCountSpan) {
+                clickCounterBtn.addEventListener('click', () => {
+                    clickCounter++;
+                    clickCountSpan.textContent = clickCounter;
+                });
+            }
+            
+            if (resetCounterBtn) {
+                resetCounterBtn.addEventListener('click', () => {
+                    clickCounter = 0;
+                    clickCountSpan.textContent = clickCounter;
+                });
+            }
+
+            // Пример добавления задач
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const newTaskInput = document.getElementById('newTask');
+            const tasksList = document.getElementById('tasks');
+            
+            if (addTaskBtn && newTaskInput && tasksList) {
+                addTaskBtn.addEventListener('click', () => {
+                    const taskText = newTaskInput.value.trim();
+                    if (taskText) {
+                        const li = document.createElement('li');
+                        li.textContent = taskText;
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.textContent = 'Удалить';
+                        deleteBtn.classList.add('delete-task');
+                        deleteBtn.addEventListener('click', () => li.remove());
+                        li.appendChild(deleteBtn);
+                        tasksList.appendChild(li);
+                        newTaskInput.value = '';
+                    }
+                });
+            }
+
+            // Делегирование для удаления задач
+            if (tasksList) {
+                tasksList.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('delete-task')) {
+                        e.target.parentElement.remove();
+                    }
+                });
+            }
+
+            // Практическая область
+            const practiceBtn = document.getElementById('practiceBtn');
+            const practiceOutput = document.getElementById('practiceOutput');
+            if (practiceBtn && practiceOutput) {
+                practiceBtn.addEventListener('click', () => {
+                    const message = document.createElement('div');
+                    message.textContent = 'Сообщение от JavaScript!';
+                    message.style.background = '#10b981';
+                    message.style.color = 'white';
+                    message.style.padding = '10px';
+                    message.style.margin = '10px 0';
+                    message.style.borderRadius = '5px';
+                    practiceOutput.appendChild(message);
+                    setTimeout(() => message.remove(), 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

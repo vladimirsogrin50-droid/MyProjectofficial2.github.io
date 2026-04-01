@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все уроки - JavaScript Pro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="/">JavaScript Pro</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/#about" class="nav-link">О курсе</a></li>
+                <li><a href="/#lessons" class="nav-link">Уроки</a></li>
+                <li><a href="/lessons.html" class="nav-link active">Все уроки</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="lessons-page">
+            <div class="container">
+                <h1 class="page-title">Все уроки курса</h1>
+                <div class="lessons-full-list">
+                    <div class="lesson-full-card">
+                        <div class="lesson-number large">01</div>
+                        <div class="lesson-info">
+                            <h2>Введение в JavaScript</h2>
+                            <p>Переменные, типы данных, основы синтаксиса, работа с консолью. В этом уроке вы узнаете, что такое JavaScript и как начать писать свой первый код.</p>
+                            <ul class="lesson-topics">
+                                <li>Что такое JavaScript</li>
+                                <li>Переменные: let, const</li>
+                                <li>Типы данных</li>
+                                <li>Базовые операции</li>
+                            </ul>
+                            <a href="/lessons/lesson-1.html" class="btn btn-primary">Перейти к уроку</a>
+                        </div>
+                    </div>
+                    <div class="lesson-full-card">
+                        <div class="lesson-number large">02</div>
+                        <div class="lesson-info">
+                            <h2>Условные операторы и циклы</h2>
+                            <p>Управление потоком выполнения программы. Научитесь принимать решения и повторять действия с помощью циклов.</p>
+                            <ul class="lesson-topics">
+                                <li>Операторы if, else, else if</li>
+                                <li>Оператор switch</li>
+                                <li>Циклы for, while, do...while</li>
+                                <li>Вложенные циклы</li>
+                            </ul>
+                            <a href="/lessons/lesson-2.html" class="btn btn-primary">Перейти к уроку</a>
+                        </div>
+                    </div>
+                    <div class="lesson-full-card">
+                        <div class="lesson-number large">03</div>
+                        <div class="lesson-info">
+                            <h2>Функции</h2>
+                            <p>Создание переиспользуемых блоков кода. Узнайте все о функциях в JavaScript.</p>
+                            <ul class="lesson-topics">
+                                <li>Function Declaration vs Expression</li>
+                                <li>Стрелочные функции</li>
+                                <li>Параметры и аргументы</li>
+                                <li>Замыкания (Closures)</li>
+                            </ul>
+                            <a href="/lessons/lesson-3.html" class="btn btn-primary">Перейти к уроку</a>
+                        </div>
+                    </div>
+                    <div class="lesson-full-card">
+                        <div class="lesson-number large">04</div>
+                        <div class="lesson-info">
+                            <h2>Работа с DOM</h2>
+                            <p>Взаимодействие со страницей: изменение элементов, обработка событий, создание динамического контента.</p>
+                            <ul class="lesson-topics">
+                                <li>Поиск элементов</li>
+                                <li>Изменение содержимого</li>
+                                <li>Создание и удаление элементов</li>
+                                <li>Обработка событий</li>
+                            </ul>
+                            <a href="/lessons/lesson-4.html" class="btn btn-primary">Перейти к уроку</a>
+                        </div>
+                    </div>
+                    <div class="lesson-full-card">
+                        <div class="lesson-number large">05</div>
+                        <div class="lesson-info">
+                            <h2>Асинхронность</h2>
+                            <p>Работа с асинхронным кодом: setTimeout, Promise, async/await, запросы к API.</p>
+                            <ul class="lesson-topics">
+                                <li>setTimeout и setInterval</li>
+                                <li>Callback функции</li>
+                                <li>Promise и цепочки</li>
+                                <li>async/await</li>
+                                <li>Fetch API</li>
+                            </ul>
+                            <a href="/lessons/lesson-5.html" class="btn btn-primary">Перейти к уроку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JavaScript Pro. Бесплатный курс по JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

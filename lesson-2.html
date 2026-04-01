@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 2: Условные операторы и циклы - JavaScript Pro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="/">JavaScript Pro</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/#about" class="nav-link">О курсе</a></li>
+                <li><a href="/#lessons" class="nav-link">Уроки</a></li>
+                <li><a href="/lessons.html" class="nav-link">Все уроки</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <article class="lesson-article">
+            <div class="container">
+                <div class="lesson-header">
+                    <div class="breadcrumbs">
+                        <a href="/">Главная</a> / 
+                        <a href="/lessons.html">Уроки</a> / 
+                        <span>Урок 2</span>
+                    </div>
+                    <h1>Урок 2: Условные операторы и циклы</h1>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 20 минут</span>
+                        <span><i class="fas fa-code"></i> Начинающий</span>
+                    </div>
+                </div>
+
+                <div class="lesson-content">
+                    <section>
+                        <h2>Условные операторы</h2>
+                        <p>Условные операторы позволяют выполнять разные блоки кода в зависимости от условий. Это основа принятия решений в программировании.</p>
+                        
+                        <h3>Оператор if</h3>
+                        <p>Выполняет код, только если условие истинно (true).</p>
+                        <pre><code>
+let age = 18;
+
+if (age >= 18) {
+    console.log("Вы совершеннолетний");
+    console.log("Вам доступен весь контент");
+}
+                        </code></pre>
+
+                        <h3>Оператор if...else</h3>
+                        <p>Выполняет один блок кода, если условие истинно, и другой — если ложно.</p>
+                        <pre><code>
+let age = 16;
+
+if (age >= 18) {
+    console.log("Вы совершеннолетний");
+} else {
+    console.log("Вы несовершеннолетний");
+    console.log("Доступ ограничен");
+}
+                        </code></pre>
+
+                        <h3>Оператор else if</h3>
+                        <p>Позволяет проверять несколько условий последовательно.</p>
+                        <pre><code>
+let score = 85;
+
+if (score >= 90) {
+    console.log("Отлично! Ваша оценка: 5");
+} else if (score >= 70) {
+    console.log("Хорошо! Ваша оценка: 4");
+} else if (score >= 50) {
+    console.log("Удовлетворительно! Ваша оценка: 3");
+} else {
+    console.log("Нужно больше практики. Оценка: 2");
+}
+                        </code></pre>
+
+                        <h3>Тернарный оператор</h3>
+                        <p>Краткая форма записи if...else для простых условий.</p>
+                        <pre><code>
+let age = 20;
+let status = age >= 18 ? "Совершеннолетний" : "Несовершеннолетний";
+console.log(status); // "Совершеннолетний"
+
+// То же самое с if...else:
+if (age >= 18) {
+    status = "Совершеннолетний";
+} else {
+    status = "Несовершеннолетний";
+}
+                        </code></pre>
+
+                        <h3>Оператор switch</h3>
+                        <p>Удобен для проверки одного значения с множеством вариантов.</p>
+                        <pre><code>
+let day = "понедельник";
+
+switch(day) {
+    case "понедельник":
+        console.log("Начало рабочей недели");
+        break;
+    case "пятница":
+        console.log("Почти выходные");
+        break;
+    case "суббота":
+    case "воскресенье":
+        console.log("Выходной! Отдыхаем");
+        break;
+    default:
+        console.log("Обычный рабочий день");
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Циклы</h2>
+                        <p>Циклы позволяют выполнять один и тот же код многократно. Это избавляет от дублирования кода.</p>
+
+                        <h3>Цикл for</h3>
+                        <p>Самый часто используемый цикл. Состоит из трех частей: инициализация, условие, инкремент.</p>
+                        <pre><code>
+// Вывод чисел от 1 до 5
+for (let i = 1; i <= 5; i++) {
+    console.log("Число:", i);
+}
+
+// Перебор массива
+let fruits = ["яблоко", "банан", "апельсин", "манго"];
+for (let i = 0; i < fruits.length; i++) {
+    console.log("Фрукт:", fruits[i]);
+}
+
+// Сумма чисел от 1 до 10
+let sum = 0;
+for (let i = 1; i <= 10; i++) {
+    sum = sum + i;
+}
+console.log("Сумма от 1 до 10:", sum); // 55
+                        </code></pre>
+
+                        <h3>Цикл while</h3>
+                        <p>Выполняется, пока условие истинно. Условие проверяется перед каждой итерацией.</p>
+                        <pre><code>
+let count = 1;
+while (count <= 5) {
+    console.log("Итерация:", count);
+    count++;
+}
+
+// Поиск числа
+let target = 42;
+let guess = 0;
+let attempts = 0;
+
+while (guess !== target) {
+    guess = Math.floor(Math.random() * 100) + 1;
+    attempts++;
+}
+console.log(`Число ${target} найдено за ${attempts} попыток`);
+                        </code></pre>
+
+                        <h3>Цикл do...while</h3>
+                        <p>Похож на while, но условие проверяется после выполнения кода. Тело цикла выполнится хотя бы один раз.</p>
+                        <pre><code>
+let i = 10;
+do {
+    console.log("Значение:", i);
+    i++;
+} while (i <= 5);
+// Выведет: Значение: 10 (один раз, даже если условие ложно)
+                        </code></pre>
+
+                        <h3>Цикл for...of (для массивов)</h3>
+                        <p>Удобный способ перебора элементов массива.</p>
+                        <pre><code>
+let colors = ["красный", "зеленый", "синий", "желтый"];
+for (let color of colors) {
+    console.log("Цвет:", color);
+}
+                        </code></pre>
+
+                        <h3>Управление циклами</h3>
+                        <pre><code>
+// break - прерывает цикл
+for (let i = 1; i <= 10; i++) {
+    if (i === 5) {
+        break; // остановка на 5
+    }
+    console.log(i); // 1, 2, 3, 4
+}
+
+// continue - пропускает текущую итерацию
+for (let i = 1; i <= 5; i++) {
+    if (i === 3) {
+        continue; // пропускаем 3
+    }
+    console.log(i); // 1, 2, 4, 5
+}
+                        </code></pre>
+                    </section>
+
+                    <section class="practice">
+                        <h2>Практическое задание</h2>
+                        <p>1. Напишите программу, которая определяет время суток по часу (0-23):</p>
+                        <ul>
+                            <li>6-11: "Утро"</li>
+                            <li>12-17: "День"</li>
+                            <li>18-23: "Вечер"</li>
+                            <li>0-5: "Ночь"</li>
+                        </ul>
+                        <p>2. Используя цикл for, выведите все четные числа от 2 до 20.</p>
+                        <p>3. Используя цикл while, найдите сумму всех чисел от 1 до 100 и выведите результат.</p>
+                    </section>
+                </div>
+
+                <div class="lesson-navigation">
+                    <a href="/lessons/lesson-1.html" class="btn btn-secondary">← Предыдущий урок</a>
+                    <a href="/lessons/lesson-3.html" class="btn btn-primary">Следующий урок →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JavaScript Pro. Бесплатный курс по JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

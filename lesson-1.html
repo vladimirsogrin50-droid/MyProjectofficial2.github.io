@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 1: Введение в JavaScript - JavaScript Pro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="/">JavaScript Pro</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/#about" class="nav-link">О курсе</a></li>
+                <li><a href="/#lessons" class="nav-link">Уроки</a></li>
+                <li><a href="/lessons.html" class="nav-link">Все уроки</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <article class="lesson-article">
+            <div class="container">
+                <div class="lesson-header">
+                    <div class="breadcrumbs">
+                        <a href="/">Главная</a> / 
+                        <a href="/lessons.html">Уроки</a> / 
+                        <span>Урок 1</span>
+                    </div>
+                    <h1>Урок 1: Введение в JavaScript</h1>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 15 минут</span>
+                        <span><i class="fas fa-code"></i> Начинающий</span>
+                    </div>
+                </div>
+
+                <div class="lesson-content">
+                    <section>
+                        <h2>Что такое JavaScript?</h2>
+                        <p>JavaScript — это язык программирования, который используется для создания интерактивных веб-страниц. Вместе с HTML и CSS он формирует основу современного веб-разработки.</p>
+                        <p>JavaScript позволяет:</p>
+                        <ul>
+                            <li>Добавлять интерактивность на сайт (анимации, всплывающие окна)</li>
+                            <li>Обрабатывать действия пользователя (клики, ввод текста, движение мыши)</li>
+                            <li>Изменять содержимое страницы без перезагрузки</li>
+                            <li>Отправлять запросы на сервер и получать данные</li>
+                            <li>Создавать сложные веб-приложения и игры</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Подключение JavaScript к странице</h2>
+                        <p>Существует два способа подключить JavaScript к HTML-странице:</p>
+                        <ul>
+                            <li><strong>Внутренний (inline)</strong> - код пишется внутри тега &lt;script&gt;</li>
+                            <li><strong>Внешний (external)</strong> - код выносится в отдельный файл с расширением .js</li>
+                        </ul>
+                        
+                        <h3>Пример внутреннего подключения:</h3>
+                        <pre><code>
+&lt;script&gt;
+    console.log("Привет, мир!");
+&lt;/script&gt;
+                        </code></pre>
+
+                        <h3>Пример внешнего подключения:</h3>
+                        <pre><code>
+&lt;script src="script.js"&gt;&lt;/script&gt;
+                        </code></pre>
+                        
+                        <p>Тег &lt;script&gt; рекомендуется размещать перед закрывающим тегом &lt;/body&gt;, чтобы скрипты не блокировали загрузку страницы.</p>
+                    </section>
+
+                    <section>
+                        <h2>Переменные</h2>
+                        <p>Переменные используются для хранения данных. В JavaScript есть три способа объявления переменных:</p>
+                        <ul>
+                            <li><strong>let</strong> — для переменных, значение которых может меняться</li>
+                            <li><strong>const</strong> — для переменных, значение которых не меняется (константы)</li>
+                            <li><strong>var</strong> — устаревший способ (использовать не рекомендуется)</li>
+                        </ul>
+                        
+                        <h3>Примеры объявления переменных:</h3>
+                        <pre><code>
+// Объявление переменной с помощью let
+dlet userName = "Иван";
+let age = 25;
+let isStudent = true;
+
+// Объявление константы
+const PI = 3.14159;
+const SITE_NAME = "JavaScript Pro";
+
+// Изменение значения переменной
+userName = "Петр";
+age = age + 1;
+
+console.log(userName); // Выведет: Петр
+console.log(age);      // Выведет: 26
+console.log(PI);       // Выведет: 3.14159
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Типы данных</h2>
+                        <p>В JavaScript есть 8 основных типов данных:</p>
+                        <ul>
+                            <li><strong>number</strong> — числа (целые и дробные)</li>
+                            <li><strong>string</strong> — строки (текст в кавычках)</li>
+                            <li><strong>boolean</strong> — логический тип (true или false)</li>
+                            <li><strong>undefined</strong> — значение не определено</li>
+                            <li><strong>null</strong> — пустое значение</li>
+                            <li><strong>object</strong> — объекты (сложные структуры)</li>
+                            <li><strong>array</strong> — массивы (списки значений)</li>
+                            <li><strong>symbol</strong> — уникальные идентификаторы</li>
+                        </ul>
+
+                        <h3>Примеры разных типов данных:</h3>
+                        <pre><code>
+let number = 42;                    // number
+let text = "Привет, мир!";          // string
+let isActive = true;                // boolean
+let nothing = null;                 // null
+let notDefined;                     // undefined
+
+let user = {                        // object
+    name: "Анна",
+    age: 30,
+    city: "Москва"
+};
+
+let colors = ["red", "green", "blue"]; // array
+
+console.log(typeof number);    // "number"
+console.log(typeof text);      // "string"
+console.log(typeof isActive);  // "boolean"
+console.log(typeof user);      // "object"
+console.log(typeof colors);    // "object" (массив - это объект)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Операторы</h2>
+                        <p>Операторы выполняют действия с данными:</p>
+                        
+                        <h3>Арифметические операторы:</h3>
+                        <pre><code>
+let a = 10;
+let b = 3;
+
+console.log(a + b);  // 13 (сложение)
+console.log(a - b);  // 7  (вычитание)
+console.log(a * b);  // 30 (умножение)
+console.log(a / b);  // 3.333... (деление)
+console.log(a % b);  // 1  (остаток от деления)
+console.log(a ** b); // 1000 (возведение в степень)
+                        </code></pre>
+
+                        <h3>Операторы сравнения:</h3>
+                        <pre><code>
+console.log(5 > 3);   // true
+console.log(5 < 3);   // false
+console.log(5 >= 5);  // true
+console.log(5 <= 3);  // false
+console.log(5 == "5"); // true (сравнение с приведением типов)
+console.log(5 === "5"); // false (строгое сравнение)
+console.log(5 != "5");  // false
+console.log(5 !== "5"); // true
+                        </code></pre>
+
+                        <h3>Логические операторы:</h3>
+                        <pre><code>
+let x = true;
+let y = false;
+
+console.log(x && y); // false (И)
+console.log(x || y); // true  (ИЛИ)
+console.log(!x);     // false (НЕ)
+                        </code></pre>
+                    </section>
+
+                    <section class="practice">
+                        <h2>Практическое задание</h2>
+                        <p>Создайте в консоли браузера (F12) следующие переменные:</p>
+                        <ul>
+                            <li>Ваше имя (строка)</li>
+                            <li>Ваш возраст (число)</li>
+                            <li>Любимый язык программирования (строка)</li>
+                        </ul>
+                        <p>Выведите все переменные в консоль с помощью console.log().</p>
+                        <p>Создайте переменную, которая будет хранить результат сложения вашего возраста и 10. Выведите результат.</p>
+                    </section>
+                </div>
+
+                <div class="lesson-navigation">
+                    <a href="/lessons.html" class="btn btn-secondary">← К списку уроков</a>
+                    <a href="/lessons/lesson-2.html" class="btn btn-primary">Следующий урок →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JavaScript Pro. Бесплатный курс по JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

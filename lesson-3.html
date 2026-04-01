@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 3: Функции - JavaScript Pro</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="/">JavaScript Pro</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/#about" class="nav-link">О курсе</a></li>
+                <li><a href="/#lessons" class="nav-link">Уроки</a></li>
+                <li><a href="/lessons.html" class="nav-link">Все уроки</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <article class="lesson-article">
+            <div class="container">
+                <div class="lesson-header">
+                    <div class="breadcrumbs">
+                        <a href="/">Главная</a> / 
+                        <a href="/lessons.html">Уроки</a> / 
+                        <span>Урок 3</span>
+                    </div>
+                    <h1>Урок 3: Функции</h1>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 25 минут</span>
+                        <span><i class="fas fa-code"></i> Средний</span>
+                    </div>
+                </div>
+
+                <div class="lesson-content">
+                    <section>
+                        <h2>Что такое функции?</h2>
+                        <p>Функции — это "строительные блоки" JavaScript. Это блоки кода, которые можно многократно использовать. Функции позволяют:</p>
+                        <ul>
+                            <li>Избегать дублирования кода (DRY-принцип)</li>
+                            <li>Разбивать программу на логические части</li>
+                            <li>Упрощать отладку и поддержку кода</li>
+                            <li>Создавать переиспользуемые компоненты</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Способы создания функций</h2>
+                        
+                        <h3>1. Function Declaration (объявление функции)</h3>
+                        <p>Классический способ. Функцию можно вызвать до ее объявления (hoisting).</p>
+                        <pre><code>
+function greet(name) {
+    return "Привет, " + name + "!";
+}
+
+console.log(greet("Анна")); // "Привет, Анна!"
+console.log(greet("Петр")); // "Привет, Петр!"
+                        </code></pre>
+
+                        <h3>2. Function Expression (функциональное выражение)</h3>
+                        <p>Функция присваивается переменной. Вызвать можно только после объявления.</p>
+                        <pre><code>
+const greet = function(name) {
+    return "Привет, " + name + "!";
+};
+
+console.log(greet("Мария")); // "Привет, Мария!"
+                        </code></pre>
+
+                        <h3>3. Стрелочные функции (Arrow Functions)</h3>
+                        <p>Современный и лаконичный синтаксис. Не имеют собственного this.</p>
+                        <pre><code>
+// Полная форма
+const greet = (name) => {
+    return "Привет, " + name + "!";
+};
+
+// Если один параметр, скобки можно опустить
+const greetShort = name => {
+    return "Привет, " + name + "!";
+};
+
+// Если тело состоит из одного выражения, можно опустить return и фигурные скобки
+const greetShortest = name => "Привет, " + name + "!";
+
+// Без параметров
+const sayHello = () => "Привет!";
+
+console.log(sayHello()); // "Привет!"
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Параметры и аргументы</h2>
+                        <p>Функции могут принимать данные через параметры и возвращать результат.</p>
+                        <pre><code>
+// Функция с несколькими параметрами
+function sum(a, b) {
+    return a + b;
+}
+
+// Функция с параметрами по умолчанию (ES6)
+function multiply(a, b = 1) {
+    return a * b;
+}
+
+console.log(sum(5, 3));      // 8
+console.log(multiply(5));    // 5 (b = 1 по умолчанию)
+console.log(multiply(5, 2)); // 10
+
+// Функция, возвращающая несколько значений через объект
+function getUserInfo(name, age, city) {
+    return {
+        userName: name,
+        userAge: age,
+        userCity: city,
+        isAdult: age >= 18
+    };
+}
+
+const user = getUserInfo("Иван", 25, "Москва");
+console.log(user.userName); // "Иван"
+console.log(user.isAdult);  // true
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Область видимости (Scope)</h2>
+                        <p>Переменные, объявленные внутри функции, доступны только внутри этой функции (локальная область видимости).</p>
+                        <pre><code>
+let globalVar = "Я глобальная переменная"; // глобальная
+
+function myFunction() {
+    let localVar = "Я локальная переменная"; // локальная
+    console.log(globalVar); // ✅ Доступно
+    console.log(localVar);  // ✅ Доступно
+}
+
+myFunction();
+console.log(globalVar);     // ✅ Доступно
+console.log(localVar);      // ❌ Ошибка! localVar не определена
+
+// Переменные с одинаковыми именами в разных функциях не конфликтуют
+function first() {
+    let message = "Первая функция";
+    console.log(message);
+}
+
+function second() {
+    let message = "Вторая функция";
+    console.log(message);
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Замыкания (Closures)</h2>
+                        <p>Замыкание — это функция, которая "запоминает" переменные из внешней области видимости даже после того, как внешняя функция завершила выполнение.</p>
+                        <pre><code>
+function createCounter() {
+    let count = 0; // переменная "замыкается"
+    
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+
+// Каждый вызов createCounter создает независимый счетчик
+const counter2 = createCounter();
+console.log(counter2()); // 1 (начинает с нуля)
+console.log(counter());  // 4 (продолжает свой счет)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Функции высшего порядка</h2>
+                        <p>Функции, которые принимают другие функции как аргументы или возвращают функции.</p>
+                        <pre><code>
+// Функция, принимающая другую функцию
+function calculate(a, b, operation) {
+    return operation(a, b);
+}
+
+const add = (x, y) => x + y;
+const multiply = (x, y) => x * y;
+
+console.log(calculate(5, 3, add));      // 8
+console.log(calculate(5, 3, multiply)); // 15
+
+// Встроенные методы массивов - примеры функций высшего порядка
+let numbers = [1, 2, 3, 4, 5];
+
+// map - преобразует каждый элемент
+let doubled = numbers.map(n => n * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// filter - фильтрует элементы
+let evenNumbers = numbers.filter(n => n % 2 === 0);
+console.log(evenNumbers); // [2, 4]
+
+// reduce - сворачивает массив в одно значение
+let sum = numbers.reduce((acc, n) => acc + n, 0);
+console.log(sum); // 15
+                        </code></pre>
+                    </section>
+
+                    <section class="practice">
+                        <h2>Практическое задание</h2>
+                        <p>1. Напишите функцию `isEven`, которая принимает число и возвращает true, если число четное, и false, если нечетное.</p>
+                        <p>2. Напишите функцию `getMax`, которая принимает два числа и возвращает большее из них.</p>
+                        <p>3. Напишите функцию `factorial`, которая вычисляет факториал числа (произведение всех чисел от 1 до n). Используйте рекурсию.</p>
+                        <p>4. Напишите функцию `createMultiplier`, которая принимает число и возвращает новую функцию, умножающую свой аргумент на это число. Пример: `const double = createMultiplier(2); double(5) => 10`.</p>
+                    </section>
+                </div>
+
+                <div class="lesson-navigation">
+                    <a href="/lessons/lesson-2.html" class="btn btn-secondary">← Предыдущий урок</a>
+                    <a href="/lessons/lesson-4.html" class="btn btn-primary">Следующий урок →</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 JavaScript Pro. Бесплатный курс по JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
